@@ -30,7 +30,7 @@ func main() {
 	}
 	e := echo.New()
 	e.GET("/", hello)
-	e.GET("/:name", helloName)
+	// e.GET("/:name", helloName)
 	e.GET("/user", getUser)
 	if err := e.Start(port); err != nil {
 		fmt.Println(err)
