@@ -38,7 +38,7 @@ func main() {
 }
 
 func hello(c echo.Context) error {
-	return c.String(200, "Hajimemashite")
+	return c.String(200, "hello")
 }
 
 func helloName(c echo.Context) error {
