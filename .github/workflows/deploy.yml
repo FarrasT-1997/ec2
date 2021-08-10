@@ -16,7 +16,7 @@ jobs:
         script: |
           if [ ! -d "/home/ubuntu/app" ]
           then
-            git clone git@github.com:FarrasT-1997/ec2.git
+            git clone git@github.com:FarrasT-1997/ec2.git /home/ubuntu/app
           fi
           cd /home/ubuntu/app
           git pull origin master
