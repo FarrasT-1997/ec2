@@ -21,7 +21,7 @@ func main() {
 }
 
 func hello(c echo.Context) error {
-	return c.String(200, "Hello Dunia alam semesta dan isinya")
+	return c.String(200, "Hajimemashite")
 }
 
 func helloName(c echo.Context) error {
