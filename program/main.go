@@ -47,7 +47,7 @@ func helloName(c echo.Context) error {
 }
 
 func getUser(c echo.Context) error {
-	var users []User
+	var users []User = []User{}
 	DB.Find(&users)
 	return c.JSON(http.StatusOK, users)
 }
