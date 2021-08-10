@@ -19,7 +19,8 @@ type User struct {
 
 func main() {
 	connectionString := os.Getenv("CONNECTION_STRING")
-	DB, err := gorm.Open(mysql.Open(connectionString), &gorm.Config{})
+	var err error
+	DB, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
@@ -30,7 +31,6 @@ func main() {
 	}
 	e := echo.New()
 	e.GET("/", hello)
-	// e.GET("/:name", helloName)
 	e.GET("/user", getUser)
 	if err := e.Start(port); err != nil {
 		fmt.Println(err)
@@ -48,6 +48,9 @@ func helloName(c echo.Context) error {
 
 func getUser(c echo.Context) error {
 	var users []User = []User{}
-	DB.Find(&users)
+	if err := DB.Find(&users).Error; err != nil {
+		fmt.Println(err)
+		return c.String(500, err.Error())
+	}
 	return c.JSON(http.StatusOK, users)
 }
