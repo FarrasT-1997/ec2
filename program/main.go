@@ -49,7 +49,7 @@ func postName(c echo.Context) error {
 	if err := DB.Save(&name).Error; err != nil {
 		return c.String(500, err.Error())
 	}
-	return c.String(200, fmt.Sprintf("Hello %v", name))
+	return c.String(200, fmt.Sprintf("Hello %s", name.Name))
 }
 
 func getUser(c echo.Context) error {
